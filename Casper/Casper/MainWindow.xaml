@@ -1,12 +1,16 @@
-﻿<Window x:Class="Casper.MainWindow"
+﻿<Window x:Class="Alto_IT.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Casper"
+        xmlns:local="clr-namespace:Alto_IT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Connection" Height="490" Width="341" WindowStartupLocation="CenterScreen">
+
     <Grid>
-        
+        <TextBox Name="Champ_identifiant" HorizontalAlignment="Left" Height="29" Margin="101,124,0,0" TextWrapping="Wrap" Text="Identifiant" VerticalAlignment="Top" Width="120" FontFamily="Gill Sans MT" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <PasswordBox Name="Champ_password" HorizontalAlignment="Left" Margin="101,193,0,0" VerticalAlignment="Top" Width="120" Height="29" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="SignIn_bouton" Content="Sign In" HorizontalAlignment="Left" Margin="101,325,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="SignIn_bouton_Click"/>
+
     </Grid>
 </Window>
