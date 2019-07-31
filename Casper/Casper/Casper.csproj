@@ -65,6 +65,9 @@
     <Compile Include="AffichageDesNormes.xaml.cs">
       <DependentUpon>AffichageDesNormes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ajout_Exigence.xaml.cs">
+      <DependentUpon>Ajout_Exigence.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ajout_Norme.xaml.cs">
       <DependentUpon>Ajout_Norme.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,10 @@
     </Compile>
     <Compile Include="User.cs" />
     <Page Include="AffichageDesNormes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout_Exigence.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
