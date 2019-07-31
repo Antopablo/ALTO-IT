@@ -73,6 +73,7 @@
     <Compile Include="Modif_Projet.xaml.cs">
       <DependentUpon>Modif_Projet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Norme.cs" />
     <Compile Include="Projet.cs" />
     <Compile Include="Select_projet.xaml.cs">
       <DependentUpon>Select_projet.xaml</DependentUpon>
