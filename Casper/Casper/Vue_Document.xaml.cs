@@ -34,15 +34,17 @@ namespace Alto_IT
             ListeViewDocumentation.ItemsSource = ChargerDocuments().OrderBy(x => x);
         }
 
+        //afficher les doc
         public List<string> ChargerDocuments()
         {
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
-                var SelectAllDoc = context.Database.SqlQuery<string>("SELECT DocumentName FROM Mesures WHERE DocumentName IS NOT NULL UNION SELECT DocumentName FROM Normes WHERE DocumentName IS NOT NULL").ToList();
+                var SelectAllDoc = context.Database.SqlQuery<string>("SELECT DocumentName FROM Mesures WHERE DocumentName IS NOT NULL AND FK_to_Projets = " + dashb.ProjetEnCours.Id + " UNION SELECT DocumentName FROM Normes WHERE DocumentName IS NOT NULL AND FK_to_Projet = " + dashb.ProjetEnCours.Id).ToList();
                 return SelectAllDoc;
             }
         }
 
+        // double clique pour ouvrir le doc
         private void ListeViewDocumentation_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string DocumentFullPath = "";
