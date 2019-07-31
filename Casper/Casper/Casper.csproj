@@ -71,6 +71,7 @@
     <Compile Include="Ajout_Projet.xaml.cs">
       <DependentUpon>Ajout_Projet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Exigence.cs" />
     <Compile Include="Migrations\201907310619303_Ini.cs" />
     <Compile Include="Migrations\201907310619303_Ini.Designer.cs">
       <DependentUpon>201907310619303_Ini.cs</DependentUpon>
