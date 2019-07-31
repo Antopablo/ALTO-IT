@@ -112,6 +112,9 @@
     <Compile Include="Vue_Exigence.xaml.cs">
       <DependentUpon>Vue_Exigence.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vue_Mesure.xaml.cs">
+      <DependentUpon>Vue_Mesure.xaml</DependentUpon>
+    </Compile>
     <Page Include="AffichageDesNormes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vue_Exigence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vue_Mesure.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
