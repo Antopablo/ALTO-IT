@@ -62,6 +62,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AffichageDesNormes.xaml.cs">
+      <DependentUpon>AffichageDesNormes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ajout_Norme.xaml.cs">
+      <DependentUpon>Ajout_Norme.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ajout_Projet.xaml.cs">
       <DependentUpon>Ajout_Projet.xaml</DependentUpon>
     </Compile>
@@ -73,11 +79,20 @@
     <Compile Include="Modif_Projet.xaml.cs">
       <DependentUpon>Modif_Projet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Norme.cs" />
     <Compile Include="Projet.cs" />
     <Compile Include="Select_projet.xaml.cs">
       <DependentUpon>Select_projet.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Page Include="AffichageDesNormes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout_Norme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ajout_Projet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
