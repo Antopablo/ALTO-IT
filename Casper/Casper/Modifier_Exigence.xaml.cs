@@ -15,7 +15,7 @@ namespace Alto_IT
     public partial class Modifier_Exigence : Window
     {
         public MainWindow mw { get; set; }
-        public Vue_Circulaire Vue { get; set; }
+        public Vue_Exigence Vue { get; set; }
 
         List<string> listeMesureCheck { get; set; }
         List<int> listeMesureCheckID { get; set; }
@@ -29,13 +29,13 @@ namespace Alto_IT
             listeMesureCheckID = new List<int>();
         }
 
-        public Modifier_Exigence(MainWindow m, Vue_Circulaire v)
+        public Modifier_Exigence(MainWindow m, Vue_Exigence v)
         {
             InitializeComponent();
             mw = m;
             Vue = v;
             //ListeDesMesures.ItemsSource = mw.database.MesuresDatabase.Local;
-            mw.database.MesuresDatabase.ToList();
+            mw.database.MesureDatabase.ToList();
             listeMesureCheck = new List<string>();
             listeMesureCheckID = new List<int>();
         }
@@ -168,11 +168,11 @@ namespace Alto_IT
             CheckBox check = (CheckBox)sender;
             listeMesureCheck.Add(check.Content.ToString());
 
-            IQueryable<int> recupID = (from m in mw.database.MesuresDatabase
+            IQueryable<int> recupID = (from m in mw.database.MesureDatabase
                                        where m.Name == check.Content.ToString()
                                        select m.Id);
 
-            var M = from m in mw.database.MesuresDatabase
+            var M = from m in mw.database.MesureDatabase
                     where m.Name == check.Content.ToString()
                     select m;
 
@@ -190,7 +190,7 @@ namespace Alto_IT
             CheckBox uncheck = (CheckBox)sender;
             listeMesureCheck.Remove(uncheck.Content.ToString());
 
-            IQueryable<int> recupID = (from m in mw.database.MesuresDatabase
+            IQueryable<int> recupID = (from m in mw.database.MesureDatabase
                                        where m.Name == uncheck.Content.ToString()
                                        select m.Id);
 
@@ -200,7 +200,7 @@ namespace Alto_IT
                                    where n.IdExigence == Vue.ExigenceSelectionnee.Id && n.IdMesure == recupID.FirstOrDefault()
                                    select n;
 
-            var M = from m in mw.database.MesuresDatabase
+            var M = from m in mw.database.MesureDatabase
                     where m.Name == uncheck.Content.ToString()
                     select m;
 
@@ -219,7 +219,7 @@ namespace Alto_IT
             List<int> IDMesure = c.ToList();
             List<CheckBox> listcheck = new List<CheckBox>();
 
-            foreach (Mesures item in mw.database.MesuresDatabase)
+            foreach (Mesure item in mw.database.MesureDatabase)
             {
                 if (item.FK_to_Projets == Vue.dash.ProjetEnCours.Id)
                 {

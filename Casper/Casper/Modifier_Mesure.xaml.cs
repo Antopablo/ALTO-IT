@@ -19,7 +19,7 @@ namespace Alto_IT
     /// </summary>
     public partial class Modifier_Mesure : Window
     {
-        public Vue_Mesures VueMesure { get; set; }
+        public Vue_Mesure VueMesure { get; set; }
         public MainWindow mw { get; set; }
 
         List<string> listeMesureCheck { get; set; }
@@ -31,7 +31,7 @@ namespace Alto_IT
             listeMesureCheckID = new List<int>();
         }
 
-        public Modifier_Mesure(MainWindow m, Vue_Mesures vue)
+        public Modifier_Mesure(MainWindow m, Vue_Mesure vue)
         {
             InitializeComponent();
             VueMesure = vue;
