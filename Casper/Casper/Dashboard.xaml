@@ -1,0 +1,191 @@
+﻿<Window x:Class="Alto_IT.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:self="clr-namespace:Alto_IT"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Alto_IT"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Width="auto" WindowStartupLocation="CenterScreen">
+
+
+    <Grid x:Name="EspaceTravail">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="235"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <TreeView Name="TreeViewNORME" Grid.Row="0" Grid.Column="0" MouseUp="TreeViewNORME_MouseUp" Margin="0,0,9.6,9.6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" BorderBrush="#00828790">
+                    <TreeView.Resources>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="HeaderTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock MaxWidth="235"
+                                   TextWrapping="Wrap"
+                                   Margin="5,10,5,10"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nom_Norme}" Value="">
+                                    <Setter Property="TextBlock.Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </TreeView.Resources>
+
+
+                    <TreeView.Background>
+                        <SolidColorBrush Color="#7FA5D8F7"/>
+                    </TreeView.Background>
+
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type self:Norme}" ItemsSource="{Binding NormeObervCollec}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock  Text="• " TextWrapping="Wrap"/>
+                                <TextBlock  Text="{Binding Nom_Norme}" Width="150" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="Documentviewer" DockPanel.Dock="Right" VerticalAlignment="Center" Cursor="Help" PreviewMouseUp="Documentviewer_PreviewMouseUp" ToolTip="{Binding DocumentName}">
+                                   <Image Name="Img" Source="https://cdn.icon-icons.com/icons2/1129/PNG/512/fileinterfacesymboloftextpapersheet_79740.png" Width="20" Height="20" >
+                                       <Image.Style>
+                                           <Style TargetType="Image" >
+                                               <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Nom_Norme}" Value="Normes">
+                                                         <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                                     </DataTrigger>
+                                               </Style.Triggers>
+                                           </Style>
+                                       </Image.Style>
+                                           
+                                   </Image>
+                                </TextBlock>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+
+                <TreeView Name="TreeViewMesures" Visibility="Collapsed" Grid.Row="1" Grid.Column="0" MouseUp="TreeViewMesures_MouseUp"  Margin="0,0,9.6,9.6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" BorderBrush="#00828790">
+                    <TreeView.Resources>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="HeaderTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock MaxWidth="235"
+                                   TextWrapping="Wrap"
+                                   Margin="5,10,5,10"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TreeView.Resources>
+
+
+                    <TreeView.Background>
+                        <SolidColorBrush Color="#7FA5D8F7"/>
+                    </TreeView.Background>
+
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type self:Mesure}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock  Text="• " TextWrapping="Wrap"/>
+                                <TextBlock  Text="{Binding Name}" Width="150" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="Documentviewer" DockPanel.Dock="Right" VerticalAlignment="Center" Cursor="Help" PreviewMouseUp="Documentviewer_PreviewMouseUp">
+                                   <Image Name="Img" Source="https://cdn.icon-icons.com/icons2/1129/PNG/512/fileinterfacesymboloftextpapersheet_79740.png" Width="20" Height="20" >
+                                       <Image.Style>
+                                           <Style TargetType="Image" >
+                                               <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Name}" Value="Mesures">
+                                                         <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                                     </DataTrigger>
+                                               </Style.Triggers>
+                                           </Style>
+                                       </Image.Style>
+                                   </Image>
+                                </TextBlock>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+
+                <TreeView Name="TreeViewDocumentation" Grid.Row="2" Grid.Column="0" Margin="0,0.4,0,0" MouseUp="TreeViewDocumentation_MouseUp" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" BorderBrush="#00828790" Width="185">
+                    <TreeView.Background>
+                        <SolidColorBrush Color="#7FA5D8F7"/>
+                    </TreeView.Background>
+                    <TreeViewItem Header="• Documentation"/>
+                </TreeView>
+
+                <TreeView Name="RetourSelectProj" Grid.Row="2" Grid.Column="0" Margin="0,0,9.6,9.6" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="16" FontFamily="Segoe UI Semibold" BorderBrush="#00828790">
+                    <Image x:Name="Retour" Source="https://image.flaticon.com/icons/png/512/60/60793.png" Height="30" Width="42" MouseUp="Retour_MouseUp"/>
+                </TreeView>
+
+            </Grid>
+            <Frame Grid.Column="1" Grid.Row="0" x:Name="Frame_Vue_Circulaire" Margin="-0,50,0,-0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ScrollViewer.VerticalScrollBarVisibility="Visible" NavigationUIVisibility="Hidden"/>
+            <Frame Grid.Column="1" Grid.Row="0" x:Name="Frame_Vue_Documentation" Margin="-0,50,0,-0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ScrollViewer.VerticalScrollBarVisibility="Visible" NavigationUIVisibility="Hidden"/>
+            <Frame Grid.Column="1" Grid.Row="0" x:Name="Frame_Vue_Mesures" Margin="-0,50,0,-0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ScrollViewer.VerticalScrollBarVisibility="Visible" NavigationUIVisibility="Hidden"/>
+
+
+
+        </Grid>
+
+        <Grid x:Name="GridControle_Norme" Margin="235,0,-0.4,-0.4" Visibility="Visible" Grid.ColumnSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="Ajout_Norme" Margin="-75,21.6,-8,-10.4" Width="250" Height="40" Grid.Column="0" CornerRadius="20" Background="WhiteSmoke" BorderThickness="1" BorderBrush="DarkGray" MouseLeftButtonUp="Ajout_Norme_Click">
+                <Grid>
+                    <Button Content="Ajouter une norme" Click="Ajout_Norme_Click" Cursor="Hand" BorderThickness="0" Background="{x:Null}" FontSize="18" Margin="0,0,10,0.4" HorizontalAlignment="Right" VerticalAlignment="Center" Height="42" Width="168"/>
+                    <Image Source="https://image.noelshack.com/fichiers/2019/31/1/1564390527-plus.png" Width="20" HorizontalAlignment="Left" Margin="13,13,0,7.4" RenderTransformOrigin="1.28,1.063" />
+                </Grid>
+            </Border>
+
+            <Border x:Name="Modif_Norme" Margin="-75,72.6,-8,-61.4" Width="250" Height="40" Grid.Column="0"  CornerRadius="20" Background="WhiteSmoke" BorderThickness="1" BorderBrush="DarkGray" MouseLeftButtonUp="Modif_Norme_Click">
+                <Grid>
+                    <Button Content="Modifier une norme" Click="Modif_Norme_Click" Cursor="Hand" BorderThickness="0" Background="{x:Null}" FontSize="18" Margin="0,0,10,0.4" HorizontalAlignment="Right" VerticalAlignment="Center" Height="42" Width="168"/>
+                    <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" Width="20" HorizontalAlignment="Left" Margin="13,13,0,7.4" RenderTransformOrigin="1.28,1.063" />
+                </Grid>
+            </Border>
+
+            <Border x:Name="Supr_Norme" Margin="-75,123.6,-8,-112.4" Width="250" Height="40" Grid.Column="0" CornerRadius="20" Background="WhiteSmoke" BorderThickness="1" BorderBrush="DarkGray" MouseLeftButtonUp="Supr_Norme_Click">
+                <Grid>
+                    <Button Content="Supprimer une norme" Click="Supr_Norme_Click" Cursor="Hand" BorderThickness="0" Background="{x:Null}" FontSize="18" Margin="0,0,10,0.4" HorizontalAlignment="Right" VerticalAlignment="Center" Height="42" Width="185"/>
+                    <Image Source="http://www.sclance.com/backgrounds/red-x-mark-transparent-background/red-x-mark-transparent-background_1903744.jpg" Width="20" HorizontalAlignment="Left" Margin="13,13,0,7.4" RenderTransformOrigin="1.28,1.063" />
+                </Grid>
+            </Border>
+        </Grid>
+
+
+        <Grid Name="GridControle_exigence" Grid.ColumnSpan="2"  Visibility="Collapsed" Margin="235,0,-0.4,30" VerticalAlignment="Bottom">
+            <Border x:Name="Ajout_exigence" Width="250" Height="40" Grid.Column="0"  CornerRadius="20" Background="WhiteSmoke" BorderThickness="1" BorderBrush="DarkGray" MouseLeftButtonUp="Ajout_exigence_MouseLeftButtonUp" Margin="139,0,112,0">
+                <Grid>
+                    <Button Content="Ajouter une exigence" Click="Ajout_exigence_Click" Cursor="Hand" BorderThickness="0" Background="{x:Null}" FontSize="18" Margin="0,0,9.6,6" HorizontalAlignment="Right" VerticalAlignment="Center" Height="42" Width="188"/>
+                    <Image Source="https://image.noelshack.com/fichiers/2019/31/1/1564390527-plus.png" Width="34" HorizontalAlignment="Left" Margin="13,13,0,7" RenderTransformOrigin="1.28,1.063" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Name="GridControle_Mesure" Grid.ColumnSpan="2"  Visibility="Collapsed" Margin="235,0,-0.4,30" VerticalAlignment="Bottom">
+            <Border x:Name="Ajout_Mesure" Width="250" Height="40" Grid.Column="0"  CornerRadius="20" Background="WhiteSmoke" BorderThickness="1" BorderBrush="DarkGray" MouseLeftButtonUp="Ajout_Mesure_MouseLeftButtonUp" Margin="139,0,112,0">
+                <Grid>
+                    <Button Content="Ajouter une mesure" Click="Ajout_Mesure_Click" Cursor="Hand" BorderThickness="0" Background="{x:Null}" FontSize="18" Margin="0,0,9.6,6" HorizontalAlignment="Right" VerticalAlignment="Center" Height="42" Width="188"/>
+                    <Image Source="https://image.noelshack.com/fichiers/2019/31/1/1564390527-plus.png" Width="34" HorizontalAlignment="Left" Margin="13,13,0,7" RenderTransformOrigin="1.28,1.063" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+
+</Window>
