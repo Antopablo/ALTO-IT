@@ -1,0 +1,14 @@
+﻿<Page x:Class="Alto_IT.Vue_Document"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Alto_IT"
+      mc:Ignorable="d" 
+      Title="Vue_Document">
+
+
+    <Grid>
+        <ListView x:Name="ListeViewDocumentation" Background="Azure" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="2" MouseDoubleClick="ListeViewDocumentation_MouseDoubleClick" BorderThickness="0" FontFamily="DejaVu Sans" FontSize="13"/>
+    </Grid>
+</Page>

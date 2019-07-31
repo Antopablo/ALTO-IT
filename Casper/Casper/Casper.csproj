@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="PresentationFramework.AeroLite" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -62,7 +65,80 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AffichageDesNormes.xaml.cs">
+      <DependentUpon>AffichageDesNormes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ajout_Exigence.xaml.cs">
+      <DependentUpon>Ajout_Exigence.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ajout_Mesure.xaml.cs">
+      <DependentUpon>Ajout_Mesure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ajout_Norme.xaml.cs">
+      <DependentUpon>Ajout_Norme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ajout_Projet.xaml.cs">
+      <DependentUpon>Ajout_Projet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exigence.cs" />
+    <Compile Include="Mesure.cs" />
+    <Compile Include="Migrations\201907310619303_Ini.cs" />
+    <Compile Include="Migrations\201907310619303_Ini.Designer.cs">
+      <DependentUpon>201907310619303_Ini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Modifier_Exigence.xaml.cs">
+      <DependentUpon>Modifier_Exigence.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modifier_Mesure.xaml.cs">
+      <DependentUpon>Modifier_Mesure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modif_Projet.xaml.cs">
+      <DependentUpon>Modif_Projet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Norme.cs" />
+    <Compile Include="Projet.cs" />
+    <Compile Include="RelationMesureExigence.cs" />
+    <Compile Include="Select_projet.xaml.cs">
+      <DependentUpon>Select_projet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="Vue_Document.xaml.cs">
+      <DependentUpon>Vue_Document.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue_Exigence.xaml.cs">
+      <DependentUpon>Vue_Exigence.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue_Mesure.xaml.cs">
+      <DependentUpon>Vue_Mesure.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AffichageDesNormes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout_Exigence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout_Mesure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout_Norme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout_Projet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +152,34 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modifier_Exigence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modifier_Mesure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modif_Projet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Select_projet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vue_Document.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vue_Exigence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vue_Mesure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -91,6 +195,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201907310619303_Ini.resx">
+      <DependentUpon>201907310619303_Ini.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
