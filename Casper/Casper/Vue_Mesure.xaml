@@ -153,7 +153,7 @@
                         <TextBlock x:Name="Documentviewer" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="5,0,5,0" Cursor="Help" PreviewMouseUp="Documentviewer_PreviewMouseUp" Style="{StaticResource MenuStyle}">
                             <Image Source="https://cdn.icon-icons.com/icons2/1129/PNG/512/fileinterfacesymboloftextpapersheet_79740.png" Width="20" Height="20" ToolTip="{Binding DocumentName}" ></Image>
                         </TextBlock>
-                        <TextBlock x:Name="ExigenceAssocie" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Cursor="Help" PreviewMouseUp="ExigenceAssocie_PreviewMouseUp" Style="{StaticResource MenuStyle}">
+                        <TextBlock x:Name="ExigenceAssocie" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Cursor="Help" Style="{StaticResource MenuStyle}">
                             <Image Source="http://simpleicon.com/wp-content/uploads/link-2.png" Width="20" Height="20" VerticalAlignment="Center">
                                 <Image.ToolTip>
                                     <StackPanel>

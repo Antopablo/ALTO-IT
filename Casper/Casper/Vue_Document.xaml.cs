@@ -38,7 +38,7 @@ namespace Alto_IT
         {
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
-                var SelectAllDoc = context.Database.SqlQuery<string>("SELECT DocumentName FROM Exigences WHERE DocumentName IS NOT NULL UNION SELECT DocumentName FROM Normes WHERE DocumentName IS NOT NULL").ToList();
+                var SelectAllDoc = context.Database.SqlQuery<string>("SELECT DocumentName FROM Mesures WHERE DocumentName IS NOT NULL UNION SELECT DocumentName FROM Normes WHERE DocumentName IS NOT NULL").ToList();
                 return SelectAllDoc;
             }
         }
