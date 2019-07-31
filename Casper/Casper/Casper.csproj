@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Norme.cs" />
     <Compile Include="Projet.cs" />
+    <Compile Include="RelationMesureExigence.cs" />
     <Compile Include="Select_projet.xaml.cs">
       <DependentUpon>Select_projet.xaml</DependentUpon>
     </Compile>
