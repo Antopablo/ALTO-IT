@@ -1,0 +1,32 @@
+﻿<Window x:Class="Alto_IT.AffichageDesNormes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:self="clr-namespace:Alto_IT"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Alto_IT"
+        mc:Ignorable="d"
+        Title="Liste des Normes" Height="455.6" Width="528.542"
+        Closed="Window_Closed">
+
+    <Grid Margin="0,0,3.4,3.4">
+        <ListView x:Name="ListeViewNormes" HorizontalAlignment="Left" Height="395" Margin="10,10,0,0" VerticalAlignment="Top" Width="170" SelectionChanged="ListeViewNormes_SelectionChanged" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock x:Name="TitreModifyBlock" HorizontalAlignment="Left" Height="36" Margin="241,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Visibility="Visible"/>
+        <TextBox x:Name="TitreModify" HorizontalAlignment="Left" Height="36" Margin="241,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Visibility="Hidden"/>
+        <Button x:Name="BoutonValiderModify" Content="Valider la modification" HorizontalAlignment="Left" Margin="241,328,0,0" VerticalAlignment="Top" Width="169" Height="35" Click="BoutonValiderModify_Click" Visibility="Visible"/>
+        <Button x:Name="BoutonSupprimer" Content="Supprimer la norme" HorizontalAlignment="Left" Margin="241,328,0,0" VerticalAlignment="Top" Width="169" Height="35" Click="BoutonSupprimer_Click" Visibility="Collapsed"/>
+        <Label Name="label" Content="Document Actuel" HorizontalAlignment="Left" Margin="265,141,0,0" VerticalAlignment="Top" Width="112" FontWeight="Bold"/>
+        <ScrollViewer Name="scrollV" Margin="265,172,130,199" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            <TextBlock x:Name="Document" TextWrapping="Wrap"  VerticalAlignment="Top" Text="Aucun Document" HorizontalAlignment="Left" Padding="5,5,5,5" ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.5,0.5" Width="124" Height="52"/>
+        </ScrollViewer>
+        <Button x:Name="AjoutDocument" Content="Ajouter un Document" HorizontalAlignment="Left" Margin="265,240,0,0" VerticalAlignment="Top" Width="124" Height="26" Click="AjoutDocument_Click"/>
+
+    </Grid>
+</Window>
