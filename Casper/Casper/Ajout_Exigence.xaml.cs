@@ -21,8 +21,8 @@ namespace Alto_IT
     {
         MainWindow mw;
         Dashboard dashb;
-        Vue_Circulaire Vue;
-        public Ajout_Exigence(MainWindow m, Dashboard d, Vue_Circulaire vc)
+        Vue_Exigence Vue;
+        public Ajout_Exigence(MainWindow m, Dashboard d, Vue_Exigence vc)
         {
             InitializeComponent();
             mw = m;

@@ -14,8 +14,8 @@ namespace Alto_IT
     public partial class Dashboard : Window
     {
         public MainWindow mw { get; set; }
-        public Vue_Circulaire Vue { get; set; }
-        public Vue_Mesures Vue_Mesure { get; set; }
+        public Vue_Exigence Vue { get; set; }
+        public Vue_Mesure Vue_Mesure { get; set; }
         public Norme ROOT_Normes { get; set; }
         public Norme NormeSelectionnee { get; set; }
         public Mesure ROOT_Mesures { get; set; }
@@ -56,7 +56,7 @@ namespace Alto_IT
         {
             if (FenetreOuverte == false)
             {
-                Ajout_Exigence A = new Ajout_Exigence(mw, this, (Vue_Circulaire)Frame_Vue_Circulaire.Content);
+                Ajout_Exigence A = new Ajout_Exigence(mw, this, (Vue_Exigence)Frame_Vue_Circulaire.Content);
                 A.Show();
                 FenetreOuverte = true;
             }
@@ -174,7 +174,7 @@ namespace Alto_IT
                     Frame_Vue_Circulaire.Visibility = Visibility.Visible;
                     Frame_Vue_Documentation.Visibility = Visibility.Collapsed;
                     Frame_Vue_Mesures.Visibility = Visibility.Collapsed;
-                    Frame_Vue_Circulaire.Content = new Vue_Circulaire(this);
+                    Frame_Vue_Circulaire.Content = new Vue_Exigence(this);
                 }
             }
             catch (Exception)

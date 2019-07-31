@@ -7,13 +7,13 @@ namespace Alto_IT.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Ini : IMigrationMetadata
+    public sealed partial class initv : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Ini));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initv));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907310619303_Ini"; }
+            get { return "201907311151173_init v"; }
         }
         
         string IMigrationMetadata.Source

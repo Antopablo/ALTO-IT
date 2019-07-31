@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="PresentationFramework.AeroLite" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -82,9 +85,9 @@
     </Compile>
     <Compile Include="Exigence.cs" />
     <Compile Include="Mesure.cs" />
-    <Compile Include="Migrations\201907310619303_Ini.cs" />
-    <Compile Include="Migrations\201907310619303_Ini.Designer.cs">
-      <DependentUpon>201907310619303_Ini.cs</DependentUpon>
+    <Compile Include="Migrations\201907311151173_init v.cs" />
+    <Compile Include="Migrations\201907311151173_init v.Designer.cs">
+      <DependentUpon>201907311151173_init v.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modifier_Exigence.xaml.cs">
@@ -103,6 +106,15 @@
       <DependentUpon>Select_projet.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="Vue_Document.xaml.cs">
+      <DependentUpon>Vue_Document.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue_Exigence.xaml.cs">
+      <DependentUpon>Vue_Exigence.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue_Mesure.xaml.cs">
+      <DependentUpon>Vue_Mesure.xaml</DependentUpon>
+    </Compile>
     <Page Include="AffichageDesNormes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +168,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vue_Document.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vue_Exigence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vue_Mesure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -171,8 +195,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201907310619303_Ini.resx">
-      <DependentUpon>201907310619303_Ini.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907311151173_init v.resx">
+      <DependentUpon>201907311151173_init v.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
