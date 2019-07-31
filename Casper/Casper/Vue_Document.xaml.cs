@@ -58,7 +58,7 @@ namespace Alto_IT
 
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
-                var Doc = context.Database.SqlQuery<string>("SELECT DocumentPath FROM Exigences WHERE DocumentName = '" + DocumentSelectionne + "'").FirstOrDefault();
+                var Doc = context.Database.SqlQuery<string>("SELECT DocumentPath FROM Mesures WHERE DocumentName = '" + DocumentSelectionne + "'").FirstOrDefault();
                 DocumentFullPath = Doc;
             }
 
