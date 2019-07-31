@@ -56,9 +56,9 @@ namespace Alto_IT
             }
             else
             {
-                //Dashboard D = new Dashboard(mw, (Projet)Combo_Provider.SelectedValue);
-                //D.Show();
-                //Close();
+                Dashboard D = new Dashboard(mw, (Projet)Combo_Provider.SelectedValue);
+                D.Show();
+                Close();
             }
 
         }
