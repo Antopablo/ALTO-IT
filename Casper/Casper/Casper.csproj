@@ -62,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Ajout_Projet.xaml.cs">
+      <DependentUpon>Ajout_Projet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201907310619303_Ini.cs" />
     <Compile Include="Migrations\201907310619303_Ini.Designer.cs">
       <DependentUpon>201907310619303_Ini.cs</DependentUpon>
@@ -72,6 +75,10 @@
       <DependentUpon>Select_projet.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Page Include="Ajout_Projet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

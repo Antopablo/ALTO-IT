@@ -35,9 +35,9 @@ namespace Alto_IT
 
         private void Add_Projet_Click(object sender, RoutedEventArgs e)
         {
-            //CreationProjet CP = new CreationProjet(mw);
-            //CP.Show();
-            //Close();
+            Ajout_Projet CP = new Ajout_Projet(mw);
+            CP.Show();
+            Close();
         }
 
         public void AfficherProjet()
