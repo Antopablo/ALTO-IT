@@ -52,7 +52,7 @@ namespace Alto_IT
             fileNameWithID = "[" + (VueMesure.MesureSelectionnee.Id) + "]" + open.SafeFileName;
             fileName = open.SafeFileName;
             string sourcePath = open.FileName;
-            string targetPath = @"C:\Users\stagiaire\Desktop\Projet_Stage\Projet_Stage\Alto-IT\bin\Debug\DocumentClient\" + fileNameWithID;
+            string targetPath = @"C:\Users\stagiaire\Desktop\ALTO-IT\Casper\Casper\bin\Debug\DocumentClient\" + fileNameWithID;
 
             try
             {

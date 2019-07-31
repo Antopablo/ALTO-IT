@@ -90,28 +90,7 @@ namespace Alto_IT
                         MessageBox.Show("Impossible d'actualiser la BDD", "error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                    //switch (ComboBoxStatus.Text)
-                    //{
-                    //    case "Non Évaluée":
-                    //        Vue.ExigenceSelectionnee.Status = STATUS.non_evaluee;
-                    //        break;
-                    //    case "Non Appliquée":
-                    //        Vue.ExigenceSelectionnee.Status = STATUS.non_appliquee;
-                    //        break;
-                    //    case "Programmée":
-                    //        Vue.ExigenceSelectionnee.Status = STATUS.programmee;
-                    //        break;
-                    //    case "Appliquée":
-                    //        Vue.ExigenceSelectionnee.Status = STATUS.appliquee;
-                    //        break;
-                    //    case "Non Applicable":
-                    //        Vue.ExigenceSelectionnee.Status = STATUS.non_applicable;
-                    //        break;
-                    //    default:
-                    //        break;
-                    //}
-
-                    mw.database.SaveChanges();
+                       mw.database.SaveChanges();
                     Vue.AfficherTreeViewExigences();
                     Close();
 
@@ -141,7 +120,7 @@ namespace Alto_IT
             fileNameWithID = "[" + (Vue.ExigenceSelectionnee.Id) + "]" + open.SafeFileName;
             fileName = open.SafeFileName;
             string sourcePath = open.FileName;
-            string targetPath = @"C:\Users\stagiaire\Desktop\Projet_Stage\Projet_Stage\Alto-IT\bin\Debug\DocumentClient\" + fileNameWithID;
+            string targetPath = @"C:\Users\stagiaire\Desktop\ALTO-IT\Casper\Casper\bin\Debug\DocumentClient\" + fileNameWithID;
 
             try
             {

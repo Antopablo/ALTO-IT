@@ -149,7 +149,7 @@ namespace Alto_IT
                     fileNameWithID = "[" + (NormeSelectionnee.Id) + "]" + open.SafeFileName;
                     fileName = open.SafeFileName;
                     sourcePath = open.FileName;
-                    targetPath = @"C:\Users\stagiaire\Desktop\Projet_Stage\Projet_Stage\Alto-IT\bin\Debug\DocumentClient\" + fileNameWithID;
+                    targetPath = @"C:\Users\stagiaire\Desktop\ALTO-IT\Casper\Casper\bin\Debug\DocumentClient\" + fileNameWithID;
 
                     try
                     {
