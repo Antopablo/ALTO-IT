@@ -148,7 +148,7 @@
                         <TextBlock x:Name="btn_supr" Width="20" Height="20" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="15,0,30,0" Cursor="Hand" MouseUp="Btn_supr_MouseUp">
                             <Image Source="http://www.sclance.com/backgrounds/red-x-mark-transparent-background/red-x-mark-transparent-background_1903744.jpg" ToolTip="Supprimer"/>
                         </TextBlock>
-                        <TextBlock x:Name="MesureAssocie" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Cursor="Help" PreviewMouseUp="MesureAssocie_PreviewMouseUp" Style="{StaticResource MenuStyle}">
+                        <TextBlock x:Name="MesureAssocie" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Cursor="Help" Style="{StaticResource MenuStyle}">
                             <Image Source="http://simpleicon.com/wp-content/uploads/link-2.png" Width="20" Height="20" VerticalAlignment="Center">
                                 <Image.ToolTip>
                                     <StackPanel>

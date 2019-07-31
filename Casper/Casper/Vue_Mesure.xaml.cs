@@ -122,7 +122,6 @@ namespace Alto_IT
 
         private void Btn_modif_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
             if (dashb.FenetreOuverte == false)
             {
                 try
@@ -150,7 +149,7 @@ namespace Alto_IT
 
             try
             {
-                String fileName = dashb.NormeSelectionnee.DocumentPath;
+                String fileName = MesureSelectionnee.DocumentPath;
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 process.StartInfo.FileName = fileName;
                 process.Start();
@@ -163,11 +162,6 @@ namespace Alto_IT
             {
                 MessageBox.Show("Aucun document associé");
             }
-        }
-
-        private void ExigenceAssocie_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

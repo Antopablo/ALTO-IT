@@ -111,65 +111,49 @@ namespace Alto_IT
 
         }
 
-        private void MesureAssocie_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            //try
-            //{
-            //    String fileName = ExigenceSelectionnee.DocumentPath;
-            //    System.Diagnostics.Process process = new System.Diagnostics.Process();
-            //    process.StartInfo.FileName = fileName;
-            //    process.Start();
-            //}
-            //catch (NullReferenceException)
-            //{
-            //    MessageBox.Show("Sélectionnez une exigence");
-            //}
-            //catch (InvalidOperationException)
-            //{
-            //    MessageBox.Show("Aucun document associé");
-            //}
-
-
-        }
-
+ 
 
         public void AfficherMesureAssociee()
         {
-            List<Exigence> exigencesPresente = new List<Exigence>();
-
-            // récupère toutes les exigences du treeview
-            foreach (Exigence item in dash.mw.database.ExigenceDatabase)
+            if (dash.mw.database.MesureDatabase.Count() > 0)
             {
-                if (item.ForeignKey_TO_Norme == dash.NormeSelectionnee.Id)
+                List<Exigence> exigencesPresente = new List<Exigence>();
+
+                // récupère toutes les exigences du treeview
+                foreach (Exigence item in dash.mw.database.ExigenceDatabase)
                 {
-                    exigencesPresente.Add(item);
-
-                }
-            }
-
-            // récupère tout les ID mesures qui sont associé a chaque exigence
-            foreach (Exigence item in exigencesPresente)
-            {
-                item.Relation_Exigence_to_Mesures.Clear();
-                List<int> ID = (from a in dash.mw.database.RelationMesureExigenceDatabase
-                                where a.IdExigence == item.Id
-                                select a.IdMesure).ToList();
-
-                foreach (int mesuresID in ID)
-                {
-                    // retrouve l'objet mesure
-                    var mesure = (from b in dash.mw.database.MesureDatabase
-                                  where b.Id == mesuresID
-                                  select b).Single();
-
-                    // ajoute dans la liste Exigence 'item' le nom de la mesure associé
-                    item.Relation_Exigence_to_Mesures.Add(mesure.Name);
-                    item.Relation_Exigence_to_Mesures.Sort();
-
-                    // ajoute dans la mesure, l'exigence 'item' associé
-                    if (!mesure.Relation_Mesures_to_exigences.Contains(item.Name))
+                    if (item.ForeignKey_TO_Norme == dash.NormeSelectionnee.Id)
                     {
-                        mesure.Relation_Mesures_to_exigences.Add(item.Name);
+                        exigencesPresente.Add(item);
+
+                    }
+                }
+
+                // récupère tout les ID mesures qui sont associé a chaque exigence
+                foreach (Exigence item in exigencesPresente)
+                {
+                    item.Relation_Exigence_to_Mesures.Clear();
+                    List<int> ID = (from a in dash.mw.database.RelationMesureExigenceDatabase
+                                    where a.IdExigence == item.Id
+                                    select a.IdMesure).ToList();
+
+                    foreach (int mesuresID in ID)
+                    {
+                        // retrouve l'objet mesure
+                        var mesure = (from b in dash.mw.database.MesureDatabase
+                                      where b.Id == mesuresID
+                                      select b).FirstOrDefault();
+
+                        // ajoute dans la liste Exigence 'item' le nom de la mesure associé
+                        item.Relation_Exigence_to_Mesures.Add(mesure.Name);
+                        item.Relation_Exigence_to_Mesures.Sort();
+
+                        // ajoute dans la mesure, l'exigence 'item' associé
+                        if (!mesure.Relation_Mesures_to_exigences.Contains(item.Name))
+                        {
+                            mesure.Relation_Mesures_to_exigences.Add(item.Name);
+                        }
+
                     }
 
                 }

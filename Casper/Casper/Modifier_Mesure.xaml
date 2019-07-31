@@ -19,7 +19,7 @@
         </ListView>
 
 
-        <Button Name="ModifierMesure" Content="Modifier la mesure" HorizontalAlignment="Left" Margin="105,638,0,0" VerticalAlignment="Top" Width="538" Height="71"/>
+        <Button Name="ModifierMesure" Content="Modifier la mesure" HorizontalAlignment="Left" Margin="105,638,0,0" VerticalAlignment="Top" Width="538" Height="71" Click="ModifierMesure_Click"/>
 
         <ComboBox Name="ComboBoxStatus"  Margin="124,354,549,383.6">
             <TextBlock Text="Appliquée"/>
