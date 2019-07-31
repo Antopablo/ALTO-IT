@@ -1,0 +1,22 @@
+﻿<Window x:Class="Alto_IT.Modif_Projet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Alto_IT"
+        mc:Ignorable="d"
+        Title="AffichageProjets" Height="400" Width="300">
+    <Grid>
+
+        <TextBox x:Name="TitreModify" TextWrapping="Wrap" Text="" Margin="44,47,43.6,287.4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <ComboBox Name="Combo_Provider" HorizontalAlignment="Left" Margin="67,141,0,0" VerticalAlignment="Top" Width="157">
+            <TextBlock Text="Amazon Web Services"/>
+            <TextBlock Text="Azure"/>
+            <TextBlock Text="Google Cloud Services"/>
+        </ComboBox>
+
+        <Button Name="Validation_modification" Content="Valider les changements" HorizontalAlignment="Left" Margin="67,303,0,0" VerticalAlignment="Top" Width="157" Height="44" Click="Validation_modification_Click"/>
+
+
+    </Grid>
+</Window>

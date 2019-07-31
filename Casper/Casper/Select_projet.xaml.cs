@@ -66,9 +66,9 @@ namespace Alto_IT
         private void Bouton_modifier_projet_Click(object sender, RoutedEventArgs e)
         {
             Projet P = (Projet)Combo_Provider.SelectedValue;
-            //Modif_Projet AP = new Modif_Projet(mw, (Projet)Combo_Provider.SelectedValue);
-            //AP.Title = "Modification de : " + P.Name;
-            //AP.Show();
+            Modif_Projet AP = new Modif_Projet(mw, (Projet)Combo_Provider.SelectedValue);
+            AP.Title = "Modification de : '" + P.Name + "'";
+            AP.Show();
         }
 
         private void Combo_Provider_SelectionChanged(object sender, SelectionChangedEventArgs e)
