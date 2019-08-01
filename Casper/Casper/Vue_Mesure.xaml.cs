@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -26,6 +27,8 @@ namespace Alto_IT
         public Mesure MesureSelectionnee { get; set; }
 
         readonly object _lockCollection = new object();
+
+        public bool SuprDoc { get; set; }
 
 
 
@@ -117,7 +120,57 @@ namespace Alto_IT
 
         private void Btn_supr_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (MessageBox.Show("Êtes-vous sûr de vouloir supprimer " + MesureSelectionnee.Name, "Suppression", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            {
+                string CurrentItem = dashb.TableFormaterMesure(dashb.SimpleQuoteFormater(dashb.FormaterToSQLRequest(MesureSelectionnee.Name)));
+                Mesure Ntmp = MesureSelectionnee;
 
+                if (MessageBox.Show("Voulez - vous supprimer tous les documents associés à " + MesureSelectionnee.Name + " ? ", "Suppression des documents", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+                {
+                    SuprDoc = true;
+                    using (ApplicationDatabase context = new ApplicationDatabase())
+                    {
+                        //supprime son document associé
+                        var docASupr = context.Database.SqlQuery<string>("SELECT DocumentPath from Mesures WHERE Id = " + Ntmp.Id).FirstOrDefault();
+                        if (docASupr != null)
+                        {
+                            File.Delete(docASupr);
+                        }
+                    }
+                }
+
+                //supprime de la BDD
+                dashb.mw.database.MesureDatabase.Remove(Ntmp);
+                dashb.mw.database.SaveChanges();
+
+                using (ApplicationDatabase context = new ApplicationDatabase())
+                {
+
+                    //Quand suppression d'un parent => supprimer la table nominative des enfants
+                    dashb.SuppressionTabEntantMesure(CurrentItem);
+
+                    //supprime de la table parent
+                    var ParentName = context.Database.SqlQuery<string>("SELECT Name from Exigences WHERE Id= " + Ntmp.FK_to_Mesures).FirstOrDefault();
+
+                    var ListeEnfant = context.Database.SqlQuery<string>("SELECT * FROM " + Ntmp);
+
+                    if (ParentName != "Menu" && ParentName != null)
+                    {
+                        ParentName = dashb.TableFormater(dashb.FormaterToSQLRequest(ParentName));
+                        var zz = context.Database.ExecuteSqlCommand("DELETE FROM " + ParentName + " WHERE Titre = '" + dashb.SimpleQuoteFormater(Ntmp.Name) + "'");
+                    }
+
+                    // supprime la table à son nom
+                    var x = context.Database.ExecuteSqlCommand("DROP TABLE " + CurrentItem);
+                }
+
+
+                // remove tous ses enfants de la collection Observable
+                Ntmp.MesuresObservCollec.Clear();
+
+                // remove de la liste général dans le treeview
+                dashb.Vue_Mesure.ROOT_Mesures.MesuresObservCollec.Remove(Ntmp);
+            }
         }
 
         private void Btn_modif_MouseUp(object sender, MouseButtonEventArgs e)

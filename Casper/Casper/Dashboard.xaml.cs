@@ -62,7 +62,7 @@ namespace Alto_IT
             }
         }
 
-        public void SuppressionTabEntant(string CurrentItem)
+        public void SuppressionTabEnfantExigence(string CurrentItem)
         {
             List<string> ListeGenerale = new List<string>();
             List<string> ListeEnfant = new List<string>();
@@ -75,7 +75,7 @@ namespace Alto_IT
                     string tmp = "";
                     ListeGenerale.Add(item);
                     tmp = item;
-                    SuppressionTabEntant(TableFormater(FormaterToSQLRequest(tmp)));
+                    SuppressionTabEnfantExigence(TableFormater(FormaterToSQLRequest(tmp)));
                 }
                 foreach (string item2 in ListeGenerale)
                 {
@@ -100,6 +100,46 @@ namespace Alto_IT
             ListeGenerale.Clear();
             ListeEnfant.Clear();
         }
+
+        public void SuppressionTabEntantMesure(string CurrentItem)
+        {
+            List<string> ListeGenerale = new List<string>();
+            List<string> ListeEnfant = new List<string>();
+            using (ApplicationDatabase context = new ApplicationDatabase())
+            {
+                var RequestListEnfant = context.Database.SqlQuery<string>("Select Titre from " + CurrentItem).ToList();
+                ListeEnfant = RequestListEnfant;
+                foreach (string item in ListeEnfant)
+                {
+                    string tmp = "";
+                    ListeGenerale.Add(item);
+                    tmp = item;
+                    SuppressionTabEntantMesure(TableFormaterMesure(FormaterToSQLRequest(tmp)));
+                }
+                foreach (string item2 in ListeGenerale)
+                {
+                    if (SuprDoc == true)
+                    {
+                        var docASupr = context.Database.SqlQuery<string>("SELECT DocumentPath from Mesures WHERE Name = '" + SimpleQuoteFormater(item2) + "'").FirstOrDefault();
+                        if (docASupr != null)
+                        {
+                            File.Delete(docASupr);
+                        }
+                        SuprDoc = false;
+                    }
+
+                    var suppenfantTableExigence = context.Database.ExecuteSqlCommand("DELETE FROM Mesures WHERE Name = '" + SimpleQuoteFormater(item2) + "'");
+
+                    string tmp2 = "";
+                    tmp2 = item2;
+                    var suppenfant = context.Database.ExecuteSqlCommand("DROP TABLE " + TableFormaterMesure(SimpleQuoteFormater(FormaterToSQLRequest(tmp2))));
+                }
+                RequestListEnfant.Clear();
+            }
+            ListeGenerale.Clear();
+            ListeEnfant.Clear();
+        }
+
 
         private void Ajout_Norme_Click(object sender, RoutedEventArgs e)
         {
@@ -347,29 +387,6 @@ namespace Alto_IT
             FenetreOuverte = true;
         }
 
-        //private void Modif_Mesure_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (FenetreOuverte == false)
-        //    {
-        //        try
-        //        {
-        //            if (Vue_Mesure.Name != "Menu")
-        //            {
-        //                Modifier_Mesure MM = new Modifier_Mesure(mw, Vue_Mesure);
-        //                MM.Title.Text = Vue_Mesure.MesureSelectionnee.Name;
-        //                MM.Content.Text = Vue_Mesure.MesureSelectionnee.Description;
-        //                MM.Status.Text = Vue_Mesure.MesureSelectionnee.Status.ToString();
-        //                MM.Document.Text = Vue_Mesure.MesureSelectionnee.DocumentName;
-        //                MM.Show();
-        //                FenetreOuverte = true;
-        //            }
-        //        }
-        //        catch (System.Exception)
-        //        {
-        //            MessageBox.Show("Selectionnez une mesure à modifier", "error", MessageBoxButton.OK, MessageBoxImage.Information);
-        //        }
-        //    }
-        //}
 
         private void Retour_MouseUp(object sender, MouseButtonEventArgs e)
         {
