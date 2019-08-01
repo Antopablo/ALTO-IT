@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -164,12 +165,14 @@ namespace Alto_IT
                     var x = context.Database.ExecuteSqlCommand("DROP TABLE " + CurrentItem);
                 }
 
-
                 // remove tous ses enfants de la collection Observable
                 Ntmp.MesuresObservCollec.Clear();
 
                 // remove de la liste général dans le treeview
                 dashb.Vue_Mesure.ROOT_Mesures.MesuresObservCollec.Remove(Ntmp);
+
+                //remove les relations
+                dashb.Delete_linkMesure(Ntmp.Id, Ntmp);
             }
         }
 
@@ -199,17 +202,16 @@ namespace Alto_IT
 
         private void Documentviewer_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-
             try
             {
                 String fileName = MesureSelectionnee.DocumentPath;
-                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                Process process = new Process();
                 process.StartInfo.FileName = fileName;
                 process.Start();
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Sélectionnez une exigence");
+                MessageBox.Show("Sélectionnez une mesure");
             }
             catch (InvalidOperationException)
             {

@@ -215,6 +215,9 @@ namespace Alto_IT
 
                     // remove de la liste général dans le treeview
                     dash.Vue.ROOT_Exigences.ExigenceObervCollec.Remove(Ntmp);
+
+                    //remove les relations
+                    dash.Delete_linkExigence(Ntmp.Id, Ntmp);
                 }
             }
             else

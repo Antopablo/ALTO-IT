@@ -360,6 +360,37 @@ namespace Alto_IT
             return text.Replace("'", "''");
         }
 
+        public void Delete_linkExigence(int deleteID, Exigence ntmp)
+        {
+            using (ApplicationDatabase context = new ApplicationDatabase())
+            {
+                var zz = context.Database.ExecuteSqlCommand("DELETE FROM RelationMesureExigences WHERE IdExigence = " + deleteID);
+            }
+            foreach (Mesure item in mw.database.MesureDatabase)
+            {
+                if (item.Relation_Mesures_to_exigences.Contains(ntmp.Name))
+                {
+                    item.Relation_Mesures_to_exigences.Remove(ntmp.Name);
+                }
+            }
+        }
+
+        public void Delete_linkMesure(int deleteID, Mesure Ntmp)
+        {
+            using (ApplicationDatabase context = new ApplicationDatabase())
+            {
+                var zz = context.Database.ExecuteSqlCommand("DELETE FROM RelationMesureExigences WHERE IdMesure = " + deleteID);
+            }
+
+            foreach (Exigence item in mw.database.ExigenceDatabase)
+            {
+                if (item.Relation_Exigence_to_Mesures.Contains(Ntmp.Name))
+                {
+                    item.Relation_Exigence_to_Mesures.Remove(Ntmp.Name);
+                }
+            }
+        }
+
         private void Documentviewer_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             try
