@@ -155,7 +155,6 @@ namespace Alto_IT
                         }
 
                     }
-
                 }
             }
         }
@@ -182,9 +181,6 @@ namespace Alto_IT
                             {
                                 File.Delete(docASupr);
                             }
-
-                            //supprime des documents enfant 
-                            // TODO
                         }
                     }
 
@@ -197,7 +193,7 @@ namespace Alto_IT
                     {
 
                         //Quand suppression d'un parent => supprimer la table nominative des enfants
-                        dash.SuppressionTabEntant(CurrentItem);
+                        dash.SuppressionTabEnfantExigence(CurrentItem);
 
                         //supprime de la table parent
                         var ParentName = context.Database.SqlQuery<string>("SELECT Name from Exigences WHERE Id= " + Ntmp.ForeignKey).FirstOrDefault();
@@ -219,6 +215,9 @@ namespace Alto_IT
 
                     // remove de la liste général dans le treeview
                     dash.Vue.ROOT_Exigences.ExigenceObervCollec.Remove(Ntmp);
+
+                    //remove les relations
+                    dash.Delete_linkExigence(Ntmp.Id, Ntmp);
                 }
             }
             else
