@@ -11,6 +11,5 @@
         <TextBox Name="Champ_identifiant" HorizontalAlignment="Left" Height="29" Margin="101,124,0,0" TextWrapping="Wrap" Text="Identifiant" VerticalAlignment="Top" Width="120" FontFamily="Gill Sans MT" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <PasswordBox Name="Champ_password" HorizontalAlignment="Left" Margin="101,193,0,0" VerticalAlignment="Top" Width="120" Height="29" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button Name="SignIn_bouton" Content="Sign In" HorizontalAlignment="Left" Margin="101,325,0,0" VerticalAlignment="Top" Width="120" Height="29" Click="SignIn_bouton_Click"/>
-
     </Grid>
 </Window>

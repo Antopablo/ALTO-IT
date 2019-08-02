@@ -103,7 +103,7 @@ namespace Alto_IT
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Run(AfficherTreeViewMesure);
+            await Task.Run(() => AfficherTreeViewMesure());
             if (dashb.Vue != null)
             {
                 dashb.Vue.AfficherMesureAssociee();

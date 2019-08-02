@@ -22,5 +22,16 @@ namespace Alto_IT.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=137.74.118.171;user id=sta41;password=w5fc03;persistsecurityinfo=True;data" +
+            "base=sta41")]
+        public string sta41ConnectionString {
+            get {
+                return ((string)(this["sta41ConnectionString"]));
+            }
+        }
     }
 }
