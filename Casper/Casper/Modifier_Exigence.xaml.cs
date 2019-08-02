@@ -34,7 +34,6 @@ namespace Alto_IT
             InitializeComponent();
             mw = m;
             Vue = v;
-            //ListeDesMesures.ItemsSource = mw.database.MesuresDatabase.Local;
             mw.database.MesureDatabase.ToList();
             listeMesureCheck = new List<string>();
             listeMesureCheckID = new List<int>();
