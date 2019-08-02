@@ -75,15 +75,10 @@ namespace Alto_IT
             Close();
         }
 
-        public async void WebCreateTable(string commande)
+        public async void WebQueryMySQL(string commande)
         {
             cmd = new MySqlCommand(commande, myServerSQL);
             await cmd.ExecuteNonQueryAsync();
-        }
-
-        public void WebModifTable()
-        {
-
         }
 
         public void WebDropTable()
