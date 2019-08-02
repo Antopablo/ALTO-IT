@@ -102,10 +102,9 @@ namespace Alto_IT
             TableName = dashb.TableFormaterMesure(dashb.SimpleQuoteFormater(dashb.FormaterToSQLRequest(TableName)));
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
-
                 var x = context.Database.ExecuteSqlCommand("CREATE TABLE " + TableName + " (ID INTEGER IDENTITY(1,1) PRIMARY KEY, ForeignKey INT, Titre VARCHAR(MAX), Description VARCHAR(MAX))");
-
             }
+            mw.WebCreateTable("CREATE TABLE " + TableName + " (ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ForeignKey INT, Titre VARCHAR(10000), Description VARCHAR(10000))");
         }
 
         public void RemplirTable(string TableName, int ForeignKey)
