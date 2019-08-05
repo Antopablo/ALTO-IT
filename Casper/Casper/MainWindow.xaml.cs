@@ -81,14 +81,5 @@ namespace Alto_IT
             await cmd.ExecuteNonQueryAsync();
         }
 
-        public void WebDropTable()
-        {
-
-        }
-
-        public void WebDeleteFromTable()
-        {
-
-        }
     }
 }

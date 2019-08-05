@@ -115,6 +115,7 @@ namespace Alto_IT
                     using (ApplicationDatabase context = new ApplicationDatabase())
                     {
                         var x = context.Database.ExecuteSqlCommand("INSERT INTO " + TableName + " (ForeignKey, Titre, Description) VALUES (" + "'" + ForeignKey + "'" + "," + "'" + dashb.SimpleQuoteFormater(Title.Text) + "'" + "," + "'" + dashb.SimpleQuoteFormater(Content.Text) + "'" + ")");
+                        mw.WebQueryMySQL("INSERT INTO " + TableName + " (ForeignKey, Titre, Description) VALUES (" + "'" + ForeignKey + "'" + "," + "'" + dashb.SimpleQuoteFormater(Title.Text) + "'" + "," + "'" + dashb.SimpleQuoteFormater(Content.Text) + "'" + ")");
                         Close();
                     }
                 }
@@ -131,6 +132,7 @@ namespace Alto_IT
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
                 var x = context.Database.ExecuteSqlCommand("DROP TABLE " + TableName);
+                mw.WebQueryMySQL("DROP TABLE " + TableName);
             }
 
         }

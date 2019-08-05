@@ -90,10 +90,12 @@ namespace Alto_IT
                     }
 
                     var suppenfantTableExigence = context.Database.ExecuteSqlCommand("DELETE FROM Exigences WHERE Name = '" + SimpleQuoteFormater(item2) + "'");
+                    mw.WebQueryMySQL("DELETE FROM Exigences WHERE Name = '" + SimpleQuoteFormater(item2) + "'");
 
                     string tmp2 = "";
                     tmp2 = item2;
                     var suppenfant = context.Database.ExecuteSqlCommand("DROP TABLE " + TableFormater(SimpleQuoteFormater(FormaterToSQLRequest(tmp2))));
+                    mw.WebQueryMySQL("DROP TABLE " + TableFormater(SimpleQuoteFormater(FormaterToSQLRequest(tmp2))));
                 }
                 RequestListEnfant.Clear();
             }
@@ -129,10 +131,12 @@ namespace Alto_IT
                     }
 
                     var suppenfantTableExigence = context.Database.ExecuteSqlCommand("DELETE FROM Mesures WHERE Name = '" + SimpleQuoteFormater(item2) + "'");
+                    mw.WebQueryMySQL("DELETE FROM Mesures WHERE Name = '" + SimpleQuoteFormater(item2) + "'");
 
                     string tmp2 = "";
                     tmp2 = item2;
                     var suppenfant = context.Database.ExecuteSqlCommand("DROP TABLE " + TableFormaterMesure(SimpleQuoteFormater(FormaterToSQLRequest(tmp2))));
+                    mw.WebQueryMySQL("DROP TABLE " + TableFormaterMesure(SimpleQuoteFormater(FormaterToSQLRequest(tmp2))));
                 }
                 RequestListEnfant.Clear();
             }
@@ -365,6 +369,7 @@ namespace Alto_IT
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
                 var zz = context.Database.ExecuteSqlCommand("DELETE FROM RelationMesureExigences WHERE IdExigence = " + deleteID);
+                mw.WebQueryMySQL("DELETE FROM RelationMesureExigences WHERE IdExigence = " + deleteID);
             }
             foreach (Mesure item in mw.database.MesureDatabase)
             {
@@ -380,6 +385,7 @@ namespace Alto_IT
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
                 var zz = context.Database.ExecuteSqlCommand("DELETE FROM RelationMesureExigences WHERE IdMesure = " + deleteID);
+                mw.WebQueryMySQL("DELETE FROM RelationMesureExigences WHERE IdMesure = " + deleteID);
             }
 
             foreach (Exigence item in mw.database.ExigenceDatabase)

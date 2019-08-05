@@ -167,7 +167,7 @@ namespace Alto_IT
 
             RelationMesureExigence rme = new RelationMesureExigence(Vue.ExigenceSelectionnee.Id, recupID.FirstOrDefault());
             mw.database.RelationMesureExigenceDatabase.Add(rme);
-
+            mw.WebQueryMySQL("INSERT INTO RelationMesureExigences (IdExigence, IdMesure) VALUES ("+ Vue.ExigenceSelectionnee.Id+","+ recupID.FirstOrDefault()+")");
             mw.database.SaveChanges();
 
         }
@@ -192,7 +192,7 @@ namespace Alto_IT
                     select m;
 
             mw.database.RelationMesureExigenceDatabase.Remove(recherheRelation.FirstOrDefault());
-
+            mw.WebQueryMySQL("DELTE FROM RelationMesureExigences WHERE IdExigence = " + Vue.ExigenceSelectionnee.Id + "AND IdMesure = " + recupID.FirstOrDefault());
             mw.database.SaveChanges();
 
         }

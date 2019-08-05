@@ -204,10 +204,12 @@ namespace Alto_IT
                         {
                             ParentName = dash.TableFormater(dash.FormaterToSQLRequest(ParentName));
                             var zz = context.Database.ExecuteSqlCommand("DELETE FROM " + ParentName + " WHERE Titre = '" + dash.SimpleQuoteFormater(Ntmp.Name) + "'");
+                            dash.mw.WebQueryMySQL("DELETE FROM " + ParentName + " WHERE Titre = '" + dash.SimpleQuoteFormater(Ntmp.Name) + "'");
                         }
 
                         // supprime la table à son nom
                         var x = context.Database.ExecuteSqlCommand("DROP TABLE " + CurrentItem);
+                        dash.mw.WebQueryMySQL("DROP TABLE " + CurrentItem);
                     }
 
                     // remove tous ses enfants de la collection Observable
