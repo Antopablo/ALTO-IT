@@ -53,22 +53,33 @@ namespace Alto_IT
             //}
 
             // Cherche sur BDD Mysql
-            cmd = new MySqlCommand("SELECT Identifiant FROM Users WHERE Identifiant = " + "'" + Champ_identifiant.Text + "' AND Password = '" + Champ_password.Password + "'", myServerSQL);
+            //cmd = new MySqlCommand("SELECT Identifiant FROM Users WHERE Identifiant = " + "'" + Champ_identifiant.Text + "' AND Password = '" + Champ_password.Password + "'", myServerSQL);
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            if (reader.HasRows)
-            {
-                Select_projet P = new Select_projet(this);
-                P.Show();
-                Close();
-                reader.Close();
-            }
-            else
-            {
-                MessageBox.Show("Identifiant ou mot de passe incorrect", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                reader.Close();
-            }
+            //if (reader.HasRows)
+            //{
+            //    Select_projet P = new Select_projet(this);
+            //    P.Show();
+            //    Close();
+            //    reader.Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Identifiant ou mot de passe incorrect", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            //    reader.Close();
+            //}
+
+            Select_projet P = new Select_projet(this);
+            P.Show();
+            Close();
         }
+
+        public async void WebQueryMySQL(string commande)
+        {
+            cmd = new MySqlCommand(commande, myServerSQL);
+            await cmd.ExecuteNonQueryAsync();
+        }
+
     }
 }

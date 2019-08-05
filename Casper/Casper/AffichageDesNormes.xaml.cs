@@ -111,9 +111,11 @@ namespace Alto_IT
                         {
                             // supprime la table à son nom
                             var x = context.Database.ExecuteSqlCommand("DROP TABLE " + dashb.SimpleQuoteFormater(dashb.FormaterToSQLRequest("_" + IDSelected + item)));
+                            mw.WebQueryMySQL("DROP TABLE " + dashb.SimpleQuoteFormater(dashb.FormaterToSQLRequest("_" + IDSelected + item)));
 
                             // supprime de Exigences
                             var zz = context.Database.ExecuteSqlCommand("DELETE FROM Exigences WHERE Name = '" + dashb.SimpleQuoteFormater(item) + "'");
+                            mw.WebQueryMySQL("DELETE FROM Exigences WHERE Name = '" + dashb.SimpleQuoteFormater(item) + "'");
                         }
                     }
 

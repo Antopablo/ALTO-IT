@@ -96,6 +96,8 @@ namespace Alto_IT
             listeMesureCheckID.Add(recupID.FirstOrDefault());
 
             RelationMesureExigence rme = new RelationMesureExigence(recupID.FirstOrDefault(), VueMesure.MesureSelectionnee.Id);
+            mw.WebQueryMySQL("INSERT INTO RelationMesureExigences (IdExigence, IdMesure) VALUES (" + recupID.FirstOrDefault() +  "," + VueMesure.MesureSelectionnee.Id);
+
             mw.database.RelationMesureExigenceDatabase.Add(rme);
 
             mw.database.SaveChanges();
@@ -122,7 +124,7 @@ namespace Alto_IT
                     select m;
 
             mw.database.RelationMesureExigenceDatabase.Remove(recherheRelation.FirstOrDefault());
-
+            mw.WebQueryMySQL("DELTE FROM RelationMesureExigences WHERE IdExigence = " + recupID.FirstOrDefault() + "AND IdMesure = " + VueMesure.MesureSelectionnee.Id);
             mw.database.SaveChanges();
 
         }
@@ -178,10 +180,13 @@ namespace Alto_IT
                     {
                         //renomme la table
                         var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
+                        mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
 
                         //modif dans la table Mesure
                         var yy = context.Database.ExecuteSqlCommand("UPDATE Mesures" + " SET Description = '" + VueMesure.dashb.SimpleQuoteFormater(Content.Text) + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
+                        mw.WebQueryMySQL("UPDATE Mesures" + " SET Description = '" + VueMesure.dashb.SimpleQuoteFormater(Content.Text) + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
                         var y = context.Database.ExecuteSqlCommand("UPDATE Mesures" + " SET Name = '" + VueMesure.dashb.SimpleQuoteFormater(Title.Text) + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
+                        mw.WebQueryMySQL("UPDATE Mesures" + " SET Name = '" + VueMesure.dashb.SimpleQuoteFormater(Title.Text) + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
 
                         try
                         {
@@ -192,7 +197,11 @@ namespace Alto_IT
                                 ParentName = VueMesure.dashb.TableFormaterMesure(VueMesure.dashb.SimpleQuoteFormater(VueMesure.dashb.FormaterToSQLRequest(ParentName)));
 
                                 var zz = context.Database.ExecuteSqlCommand("UPDATE " + ParentName + " SET Description = '" + VueMesure.dashb.SimpleQuoteFormater(Content.Text) + "' WHERE Titre = '" + VueMesure.MesureSelectionnee.Name + "'");
+                                mw.WebQueryMySQL("UPDATE " + ParentName + " SET Description = '" + VueMesure.dashb.SimpleQuoteFormater(Content.Text) + "' WHERE Titre = '" + VueMesure.MesureSelectionnee.Name + "'");
+
                                 var z = context.Database.ExecuteSqlCommand("UPDATE " + ParentName + " SET Titre = '" + VueMesure.dashb.SimpleQuoteFormater(Title.Text) + "' WHERE Titre = '" + VueMesure.MesureSelectionnee.Name + "'");
+                                mw.WebQueryMySQL("UPDATE " + ParentName + " SET Titre = '" + VueMesure.dashb.SimpleQuoteFormater(Title.Text) + "' WHERE Titre = '" + VueMesure.MesureSelectionnee.Name + "'");
+
                             }
 
                             //actualise l'itemSleceted et la Vue grâce INotifyProperty
@@ -203,8 +212,11 @@ namespace Alto_IT
                         catch (Exception)
                         {
                             var w2 = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + newTableName + "', '" + CurrentItem + "'");
+                            mw.WebQueryMySQL("RENAME TABLE " + newTableName + " TO " + CurrentItem + "");
                             var yy2 = context.Database.ExecuteSqlCommand("UPDATE Mesures" + " SET Description = '" + CurrentDescription + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
+                            mw.WebQueryMySQL("UPDATE Mesures" + " SET Description = '" + CurrentDescription + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
                             var y2 = context.Database.ExecuteSqlCommand("UPDATE Mesures" + " SET Name = '" + CurrentTitle + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
+                            mw.WebQueryMySQL("UPDATE Mesures" + " SET Name = '" + CurrentTitle + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");
                             MessageBox.Show("Modification impossible", "error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
