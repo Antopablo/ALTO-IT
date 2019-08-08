@@ -22,13 +22,13 @@ namespace Alto_IT
     {
         MainWindow mw;
         Dashboard dashb;
-        Vue_Exigence Vue;
+        //Vue_Exigence Vue;
         public Ajout_Norme(MainWindow m, Dashboard dash, Vue_Exigence v)
         {
             InitializeComponent();
             mw = m;
             dashb = dash;
-            Vue = v;
+            //Vue = v;
         }
 
         private void ValiderNorme_Click(object sender, RoutedEventArgs e)
