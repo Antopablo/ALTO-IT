@@ -52,7 +52,10 @@ namespace Alto_IT
 
             if (NormeSelectionnee != null)
             {
+                string tmp = NormeSelectionnee.Nom_Norme;
                 NormeSelectionnee.Nom_Norme = TitreModify.Text;
+
+                mw.WebQueryMySQL(" UPDATE Normes SET Nom_Norme = '"+ NormeSelectionnee.Nom_Norme +"' WHERE Nom_Norme = '"+tmp+"' ");
                 mw.database.SaveChanges();
                 dashb.ROOT_Normes.NormeObervCollec.Clear();
                 dashb.AfficherLesTreeView();
@@ -68,8 +71,6 @@ namespace Alto_IT
 
         private void BoutonSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            Norme tmp = NormeSelectionnee;
-
             if (NormeSelectionnee != null)
             {
                 int IDSelected = NormeSelectionnee.Id;
@@ -99,8 +100,8 @@ namespace Alto_IT
                         }
                     }
 
-
                     mw.database.NormeDatabase.Remove(NormeSelectionnee);
+                    mw.WebQueryMySQL(" DELETE FROM Normes WHERE Nom_Norme = '"+ NormeSelectionnee.Nom_Norme+"' ");
                     mw.database.SaveChanges();
 
 

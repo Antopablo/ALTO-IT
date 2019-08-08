@@ -36,6 +36,8 @@ namespace Alto_IT
 
         private void Validation_modification_Click(object sender, RoutedEventArgs e)
         {
+            string tmp = ProjetSelect.Name;
+
             if (TitreModify.Text == "" || TitreModify.Text == null)
             {
                 MessageBox.Show("Champ manquant", "error", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -59,6 +61,7 @@ namespace Alto_IT
                         break;
                 }
             }
+            mw.WebQueryMySQL("UPDATE Projets SET Name = '"+ ProjetSelect.Name +"', Provider = '"+ (int)ProjetSelect.Provider +"' WHERE Name = '"+ tmp +"' ");
             mw.database.SaveChanges();
             Close();
             MessageBox.Show("Mise à jour terminé", "Mise à jour d'un projet", MessageBoxButton.OK, MessageBoxImage.Information);
