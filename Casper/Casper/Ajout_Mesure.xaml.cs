@@ -55,6 +55,7 @@ namespace Alto_IT
                             Mesure MesureParent = new Mesure(TitleMesure.Text, ContentMesure.Text, 0, dashb.ProjetEnCours.Id);
                             dashb.Vue_Mesure.ROOT_Mesures.MesuresObservCollec.Add(MesureParent);
                             mw.database.MesureDatabase.Add(MesureParent);
+                            mw.WebQueryMySQL("INSERT INTO Mesures (Description, FK_to_Mesures, FK_to_Projets, Name) VALUES ('"+MesureParent.Description+"',"+MesureParent.FK_to_Mesures+","+MesureParent.FK_to_Projets+",'"+MesureParent.Name+"')");
 
                             mw.database.SaveChanges();
 
@@ -76,6 +77,7 @@ namespace Alto_IT
                                 Mesure MesureEnfant = new Mesure(TitleMesure.Text, ContentMesure.Text, dashb.Vue_Mesure.MesureSelectionnee.Id, dashb.ProjetEnCours.Id);
                                 dashb.Vue_Mesure.MesureSelectionnee.MesuresObservCollec.Add(MesureEnfant);
                                 mw.database.MesureDatabase.Add(MesureEnfant);
+                                mw.WebQueryMySQL("INSERT INTO Mesures (Description, FK_to_Mesures, FK_to_Projets, Name) VALUES ('" + MesureEnfant.Description + "'," + MesureEnfant.FK_to_Mesures + "," + MesureEnfant.FK_to_Projets + ",'" + MesureEnfant.Name + "')");
 
                             }
                             catch (Exception)

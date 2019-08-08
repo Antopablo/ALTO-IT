@@ -178,9 +178,11 @@ namespace Alto_IT
                     string newTableName = VueMesure.dashb.TableFormaterMesure(VueMesure.dashb.SimpleQuoteFormater(VueMesure.dashb.FormaterToSQLRequest(Title.Text)));
                     try
                     {
-                        //renomme la table
-                        var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
-                        mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
+                        if (CurrentItem != newTableName)
+                        {   //renomme la table
+                            var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
+                            mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
+                        }
 
                         //modif dans la table Mesure
                         var yy = context.Database.ExecuteSqlCommand("UPDATE Mesures" + " SET Description = '" + VueMesure.dashb.SimpleQuoteFormater(Content.Text) + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");

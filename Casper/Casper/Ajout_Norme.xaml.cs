@@ -50,6 +50,8 @@ namespace Alto_IT
                 {
                     dashb.ROOT_Normes.NormeObervCollec.Add(N);
                     mw.database.NormeDatabase.Add(N);
+                    mw.WebQueryMySQL("INSERT INTO Normes (Nom_Norme, FK_to_Projet) VALUES ('" + N.Nom_Norme + "'," + N.FK_to_Projet +")");
+
                     mw.database.SaveChanges();
                     Close();
                 }

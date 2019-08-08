@@ -52,9 +52,12 @@ namespace Alto_IT
                     string newTableName = Vue.dash.TableFormater(Vue.dash.SimpleQuoteFormater(Vue.dash.FormaterToSQLRequest(Title.Text)));
                     try
                     {
-                        //renomme la table
-                        var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
-                        mw.WebQueryMySQL("RENAME TABLE " +CurrentItem+" TO " +newTableName+ "");
+                        if (CurrentItem != newTableName)
+                        {
+                            //renomme la table
+                            var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
+                            mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
+                        }
 
                         //modif dans la table Exigence
                         var yy = context.Database.ExecuteSqlCommand("UPDATE Exigences SET Description = '" + Vue.dash.SimpleQuoteFormater(Content.Text) + "' WHERE Id = " + "'" + Vue.ExigenceSelectionnee.Id + "'");

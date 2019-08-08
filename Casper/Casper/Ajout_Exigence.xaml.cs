@@ -52,6 +52,8 @@ namespace Alto_IT
                             Exigence ExigenceParent = new Exigence(Title.Text, Content.Text, 0, dashb.NormeSelectionnee.Id, dashb.ProjetEnCours.Id);
                             Vue.ROOT_Exigences.ExigenceObervCollec.Add(ExigenceParent);
                             mw.database.ExigenceDatabase.Add(ExigenceParent);
+                            mw.WebQueryMySQL("INSERT INTO Exigences (Description, ForeignKey,ForeignKey_TO_Norme, ForeignKey_TO_Projet, Name) VALUES ('" + ExigenceParent.Description + "'," + ExigenceParent.ForeignKey + "," + ExigenceParent.ForeignKey_TO_Norme + ","+ExigenceParent.ForeignKey_TO_Projet +",'" + ExigenceParent.Name + "')");
+
 
                             mw.database.SaveChanges();
                             Close();
@@ -72,7 +74,7 @@ namespace Alto_IT
                                 Exigence ExigenceEnfant = new Exigence(Title.Text, Content.Text, Vue.ExigenceSelectionnee.Id, dashb.NormeSelectionnee.Id, dashb.ProjetEnCours.Id);
                                 Vue.ExigenceSelectionnee.ExigenceObervCollec.Add(ExigenceEnfant);
                                 mw.database.ExigenceDatabase.Add(ExigenceEnfant);
-
+                                mw.WebQueryMySQL("INSERT INTO Exigences (Description, ForeignKey,ForeignKey_TO_Norme, ForeignKey_TO_Projet, Name) VALUES ('" + ExigenceEnfant.Description + "'," + ExigenceEnfant.ForeignKey + "," + ExigenceEnfant.ForeignKey_TO_Norme + "," + ExigenceEnfant.ForeignKey_TO_Projet + ",'" + ExigenceEnfant.Name + "')");
 
                             }
                             catch (Exception)
