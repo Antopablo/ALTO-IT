@@ -64,6 +64,7 @@ namespace Alto_IT
             else
             {
                 mw.database.ProjetDatabase.Add(P);
+                mw.WebQueryMySQL("INSERT INTO Projets (Name, Provider) VALUES ('" + P.Name + "'," + (int)P.Provider + ")");
                 mw.database.SaveChanges();
 
                 Dashboard D = new Dashboard(mw, P);

@@ -52,9 +52,12 @@ namespace Alto_IT
                     string newTableName = Vue.dash.TableFormater(Vue.dash.SimpleQuoteFormater(Vue.dash.FormaterToSQLRequest(Title.Text)));
                     try
                     {
-                        //renomme la table
-                        var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
-                        mw.WebQueryMySQL("RENAME TABLE " +CurrentItem+" TO " +newTableName+ "");
+                        if (CurrentItem != newTableName)
+                        {
+                            //renomme la table
+                            var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
+                            mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
+                        }
 
                         //modif dans la table Exigence
                         var yy = context.Database.ExecuteSqlCommand("UPDATE Exigences SET Description = '" + Vue.dash.SimpleQuoteFormater(Content.Text) + "' WHERE Id = " + "'" + Vue.ExigenceSelectionnee.Id + "'");
@@ -167,7 +170,7 @@ namespace Alto_IT
 
             RelationMesureExigence rme = new RelationMesureExigence(Vue.ExigenceSelectionnee.Id, recupID.FirstOrDefault());
             mw.database.RelationMesureExigenceDatabase.Add(rme);
-            mw.WebQueryMySQL("INSERT INTO RelationMesureExigences (IdExigence, IdMesure) VALUES ("+ Vue.ExigenceSelectionnee.Id+","+ recupID.FirstOrDefault()+")");
+            mw.WebQueryMySQL("INSERT INTO RelationMesureExigence (IdExigence, IdMesure) VALUES ("+ Vue.ExigenceSelectionnee.Id+","+ recupID.FirstOrDefault()+")");
             mw.database.SaveChanges();
 
         }
@@ -192,7 +195,7 @@ namespace Alto_IT
                     select m;
 
             mw.database.RelationMesureExigenceDatabase.Remove(recherheRelation.FirstOrDefault());
-            mw.WebQueryMySQL("DELTE FROM RelationMesureExigences WHERE IdExigence = " + Vue.ExigenceSelectionnee.Id + "AND IdMesure = " + recupID.FirstOrDefault());
+            mw.WebQueryMySQL("DELTE FROM RelationMesureExigence WHERE IdExigence = " + Vue.ExigenceSelectionnee.Id + "AND IdMesure = " + recupID.FirstOrDefault());
             mw.database.SaveChanges();
 
         }

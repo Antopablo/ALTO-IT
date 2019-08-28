@@ -96,7 +96,7 @@ namespace Alto_IT
             listeMesureCheckID.Add(recupID.FirstOrDefault());
 
             RelationMesureExigence rme = new RelationMesureExigence(recupID.FirstOrDefault(), VueMesure.MesureSelectionnee.Id);
-            mw.WebQueryMySQL("INSERT INTO RelationMesureExigences (IdExigence, IdMesure) VALUES (" + recupID.FirstOrDefault() +  "," + VueMesure.MesureSelectionnee.Id);
+            mw.WebQueryMySQL("INSERT INTO RelationMesureExigence (IdExigence, IdMesure) VALUES (" + recupID.FirstOrDefault() +  "," + VueMesure.MesureSelectionnee.Id+")");
 
             mw.database.RelationMesureExigenceDatabase.Add(rme);
 
@@ -124,7 +124,7 @@ namespace Alto_IT
                     select m;
 
             mw.database.RelationMesureExigenceDatabase.Remove(recherheRelation.FirstOrDefault());
-            mw.WebQueryMySQL("DELTE FROM RelationMesureExigences WHERE IdExigence = " + recupID.FirstOrDefault() + "AND IdMesure = " + VueMesure.MesureSelectionnee.Id);
+            mw.WebQueryMySQL("DELTE FROM RelationMesureExigence WHERE IdExigence = " + recupID.FirstOrDefault() + "AND IdMesure = " + VueMesure.MesureSelectionnee.Id);
             mw.database.SaveChanges();
 
         }
@@ -178,9 +178,11 @@ namespace Alto_IT
                     string newTableName = VueMesure.dashb.TableFormaterMesure(VueMesure.dashb.SimpleQuoteFormater(VueMesure.dashb.FormaterToSQLRequest(Title.Text)));
                     try
                     {
-                        //renomme la table
-                        var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
-                        mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
+                        if (CurrentItem != newTableName)
+                        {   //renomme la table
+                            var w = context.Database.ExecuteSqlCommand("EXEC sp_rename '" + CurrentItem + "', '" + newTableName + "'");
+                            mw.WebQueryMySQL("RENAME TABLE " + CurrentItem + " TO " + newTableName + "");
+                        }
 
                         //modif dans la table Mesure
                         var yy = context.Database.ExecuteSqlCommand("UPDATE Mesures" + " SET Description = '" + VueMesure.dashb.SimpleQuoteFormater(Content.Text) + "' WHERE Id = " + "'" + VueMesure.MesureSelectionnee.Id + "'");

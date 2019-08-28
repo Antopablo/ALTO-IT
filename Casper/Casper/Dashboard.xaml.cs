@@ -369,7 +369,7 @@ namespace Alto_IT
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
                 var zz = context.Database.ExecuteSqlCommand("DELETE FROM RelationMesureExigences WHERE IdExigence = " + deleteID);
-                mw.WebQueryMySQL("DELETE FROM RelationMesureExigences WHERE IdExigence = " + deleteID);
+                mw.WebQueryMySQL("DELETE FROM RelationMesureExigence WHERE IdExigence = " + deleteID);
             }
             foreach (Mesure item in mw.database.MesureDatabase)
             {
@@ -385,7 +385,7 @@ namespace Alto_IT
             using (ApplicationDatabase context = new ApplicationDatabase())
             {
                 var zz = context.Database.ExecuteSqlCommand("DELETE FROM RelationMesureExigences WHERE IdMesure = " + deleteID);
-                mw.WebQueryMySQL("DELETE FROM RelationMesureExigences WHERE IdMesure = " + deleteID);
+                mw.WebQueryMySQL("DELETE FROM RelationMesureExigence WHERE IdMesure = " + deleteID);
             }
 
             foreach (Exigence item in mw.database.ExigenceDatabase)
