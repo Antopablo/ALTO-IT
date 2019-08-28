@@ -36,43 +36,28 @@ namespace Alto_IT
 
         private void SignIn_bouton_Click(object sender, RoutedEventArgs e)
         {
-            // cherche dans Entity
-            //try
-            //{
-            //    User us = (from u in database.UsersDatabase
-            //             where u.Identifiant == Champ_identifiant.Text && u.Password == Champ_password.Password
-            //               select u).First();
 
-            //    Dashboard D = new Dashboard(this);
-            //    D.Show();
-            //    Close();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Identifiant ou Mot de Passe invalide");
-            //}
+            //Cherche sur BDD Mysql
+            cmd = new MySqlCommand("SELECT Identifiant FROM Users WHERE Identifiant = " + "'" + Champ_identifiant.Text + "' AND Password = '" + Champ_password.Password + "'", myServerSQL);
 
-            // Cherche sur BDD Mysql
-            //cmd = new MySqlCommand("SELECT Identifiant FROM Users WHERE Identifiant = " + "'" + Champ_identifiant.Text + "' AND Password = '" + Champ_password.Password + "'", myServerSQL);
+            MySqlDataReader reader = cmd.ExecuteReader();
 
-            //MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                Select_projet P = new Select_projet(this);
+                P.Show();
+                Close();
+                reader.Close();
+            }
+            else
+            {
+                MessageBox.Show("Identifiant ou mot de passe incorrect", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                reader.Close();
+            }
 
-            //if (reader.HasRows)
-            //{
-            //    Select_projet P = new Select_projet(this);
-            //    P.Show();
-            //    Close();
-            //    reader.Close();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Identifiant ou mot de passe incorrect", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            //    reader.Close();
-            //}
-
-            Select_projet P = new Select_projet(this);
-            P.Show();
-            Close();
+            //Select_projet P = new Select_projet(this);
+            //P.Show();
+            //Close();
         }
 
         public async void WebQueryMySQL(string commande)

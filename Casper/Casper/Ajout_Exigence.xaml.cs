@@ -52,7 +52,7 @@ namespace Alto_IT
                             Exigence ExigenceParent = new Exigence(Title.Text, Content.Text, 0, dashb.NormeSelectionnee.Id, dashb.ProjetEnCours.Id);
                             Vue.ROOT_Exigences.ExigenceObervCollec.Add(ExigenceParent);
                             mw.database.ExigenceDatabase.Add(ExigenceParent);
-                            mw.WebQueryMySQL("INSERT INTO Exigences (Description, ForeignKey,ForeignKey_TO_Norme, ForeignKey_TO_Projet, Name) VALUES ('" + ExigenceParent.Description + "'," + ExigenceParent.ForeignKey + "," + ExigenceParent.ForeignKey_TO_Norme + ","+ExigenceParent.ForeignKey_TO_Projet +",'" + ExigenceParent.Name + "')");
+                            mw.WebQueryMySQL("INSERT INTO Exigences (Description, ForeignKey,ForeignKey_TO_Norme, ForeignKey_TO_Projet, Name) VALUES ('" + dashb.SimpleQuoteFormater(ExigenceParent.Description) + "'," + ExigenceParent.ForeignKey + "," + ExigenceParent.ForeignKey_TO_Norme + ","+ExigenceParent.ForeignKey_TO_Projet +",'" + ExigenceParent.Name + "')");
 
 
                             mw.database.SaveChanges();
